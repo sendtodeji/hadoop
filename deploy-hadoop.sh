@@ -309,6 +309,7 @@ done
 
 for host in $NODES; do
     lxc file push /tmp/authorized_keys ${host}/home/hadoop/.ssh/authorized_keys
+    lxc exec ${host} -- chown hadoop:hadoop /home/hadoop/.ssh/authorized_keys
     lxc exec ${host} -- chmod 600 /home/hadoop/.ssh/authorized_keys
 done
 }
